@@ -7,6 +7,7 @@ import Signup from './componant/SignUp/Signup';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth'
 import app from './Firebase/Firebase';
 import { createContext, useState } from 'react';
+import About from './componant/About/About';
 
 
 export const SingupContext = createContext()
@@ -68,6 +69,9 @@ const router = createBrowserRouter([
       },
       {
         path: 'signup', element: <Signup></Signup>
+      },
+      {
+        path:'about', element : <About></About>
       }
 
     ]
@@ -76,7 +80,7 @@ const router = createBrowserRouter([
 
 
 return (
-  <div className="App">
+  <div className="">
     <SingupContext.Provider value={{ signUpGoogle, signUpGithub, signOutProfile,  signIn }}>
       <RouterProvider router={router}></RouterProvider>
     </SingupContext.Provider>

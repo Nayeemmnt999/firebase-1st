@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { SingupContext } from '../../App';
 
 const Navbar = () => {
-    const { signIn ,signOutProfile} = useContext(SingupContext)
+    const { signIn, signOutProfile } = useContext(SingupContext)
     // console.log(signIn);
     return (
         <div>
@@ -12,7 +12,14 @@ const Navbar = () => {
                     <NavLink to={'home'} className="btn btn-ghost normal-case text-xl">Nayeem.Dev</NavLink>
                 </div>
                 <div className="flex-none gap-2">
-                    <div className="form-control">
+                    <div className="form-control m-auto">
+                        <ul>
+                            <li>
+                                <Link className=' ms-5' to={'home'}>Home</Link>
+                                <Link className=' ms-5' to={'about'}>About</Link>
+                                <Link className=' ms-5' to={'home'}>Register</Link>
+                            </li>
+                        </ul>
 
                     </div>
                     <input type="text" placeholder="Search" className="input input-bordered" />
@@ -23,7 +30,7 @@ const Navbar = () => {
                     <h4>{signIn.displayName}</h4>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                          <div className="w-10 rounded-full">
+                            <div className="w-10 rounded-full">
                                 {
                                     signIn.uid ? <img src={signIn.photoURL} alt="" /> : <img src="https://static.vecteezy.com/system/resources/previews/002/002/403/original/man-with-beard-avatar-character-isolated-icon-free-vector.jpg" alt="" />
                                 }
