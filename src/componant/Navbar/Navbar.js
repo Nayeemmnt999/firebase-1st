@@ -16,18 +16,18 @@ const Navbar = () => {
                         <ul>
                             <li>
                                 <Link className=' ms-5' to={'home'}>Home</Link>
-                                <Link className=' ms-5' to={'about'}>About</Link>
-                                <Link className=' ms-5' to={'home'}>Register</Link>
+                                <Link className=' ms-5' to={'home'}>About </Link>
+                                {
+                                    signIn.uid ? '' : <Link className=' ms-5' to={'register'}>Register</Link>
+                                }
+                                {
+                                    signIn.uid ? '' : <Link className='ms-5' to={'login'}>Login</Link>
+                                }
                             </li>
                         </ul>
-
                     </div>
-                    <input type="text" placeholder="Search" className="input input-bordered" />
-                    {
-                        signIn.uid ? '' : <NavLink className={' ms-5 me-5 font-bold'} to={'signup'}>Signup</NavLink>
-                    }
 
-                    <h4>{signIn.displayName}</h4>
+                    <h4 className=' text-white'>{signIn.displayName}</h4>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">

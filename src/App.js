@@ -7,7 +7,8 @@ import Signup from './componant/SignUp/Signup';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth'
 import app from './Firebase/Firebase';
 import { createContext, useState } from 'react';
-import About from './componant/About/About';
+import Register from './componant/Register/Register';
+import Login from './componant/Login/Login';
 
 
 export const SingupContext = createContext()
@@ -17,7 +18,7 @@ function App() {
   const googleProvider = new GoogleAuthProvider()
   const githubProvider = new GithubAuthProvider()
   const [signIn, setSignIn] = useState({})
-console.log(signIn);
+  // console.log(signIn);
   // google authintication
   const signUpGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -52,41 +53,43 @@ console.log(signIn);
       // An error happened.
       setSignIn({})
     });
-}
-  // router setup
-const router = createBrowserRouter([
-
-  {
-    path: '/',
-    element: <Main></Main>,
-    children: [
-
-      {
-        path: '/', element: <Home></Home>
-      },
-      {
-        path: 'home', element: <Home></Home>
-      },
-      {
-        path: 'signup', element: <Signup></Signup>
-      },
-      {
-        path:'about', element : <About></About>
-      }
-
-    ]
   }
-])
+  // router setup
+  const router = createBrowserRouter([
+
+    {
+      path: '/',
+      element: <Main></Main>,
+      children: [
+
+        {
+          path: '/', element: <Home></Home>
+        },
+        {
+          path: 'home', element: <Home></Home>
+        },
+        {
+          path: 'signup', element: <Signup></Signup>
+        },
+        {
+          path: 'register', element: <Register></Register>
+        },
+        {
+          path: 'login', element: <Login></Login>
+        }
+      ]
+    }
+  ])
 
 
-return (
-  <div className="">
-    <SingupContext.Provider value={{ signUpGoogle, signUpGithub, signOutProfile,  signIn }}>
-      <RouterProvider router={router}></RouterProvider>
-    </SingupContext.Provider>
+  return (
+    <div className="">
+      <SingupContext.Provider value={{ signUpGoogle, signUpGithub, signOutProfile, signIn }}>
+        <RouterProvider router={router}></RouterProvider>
+      </SingupContext.Provider>
 
-  </div>
-);
+    </div>
+  );
 }
 
 export default App;
